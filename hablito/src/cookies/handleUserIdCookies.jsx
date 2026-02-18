@@ -25,7 +25,8 @@ export const handleUserIdCookies = async () => {
       console.log('Cookie String:', cookieString);
 
       // Check if the cookie string exists before attempting to split
-      const existingUserId = cookieString ? parseInt(cookieString.split('; ').find(row => row.startsWith('userId=')).split('=')[1], 10) : null;
+      const userIdCookie = cookieString ? cookieString.split('; ').find(row => row.startsWith('userId=')) : null;
+      const existingUserId = userIdCookie ? parseInt(userIdCookie.split('=')[1], 10) : null;
       console.log('Existing User ID:', existingUserId);
 
       // Use the existing user ID if it exists, otherwise generate a new one
