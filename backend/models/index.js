@@ -10,15 +10,22 @@ const __dirname = dirname(__filename);
 
 
 
-const sequelize = new Sequelize(
-  config.database,
-  config.username,
-  config.password,
-  {
-    host: config.host,
-    dialect: 'postgres',
-  }
-);
+// Use DATABASE_URL if available (Railway provides this), otherwise use individual credentials
+const sequelize = config.url
+  ? new Sequelize(config.url, {
+      dialect: 'postgres',
+      dialectOptions: {
+        ssl: {
+          require: true,
+          rejectUnauthorized: false,
+        },
+      },
+    })
+  : new Sequelize(config.database, config.username, config.password, {
+      host: config.host,
+      port: config.port,
+      dialect: 'postgres',
+    });
 
 
 const db = {};
