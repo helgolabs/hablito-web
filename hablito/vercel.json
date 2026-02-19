@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/learn/:path*",
-      "destination": "CONTENT_APP_VERCEL_URL/learn/:path*"
+      "destination": "https://hablito-web-ztbu.vercel.app/learn/:path*"
     }
   ]
 }
