@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/_astro/:path*",
+      "destination": "https://hablito-web-ztbu.vercel.app/_astro/:path*"
+    },
+    {
       "source": "/learn/:path*",
       "destination": "https://hablito-web-ztbu.vercel.app/learn/:path*"
     }
