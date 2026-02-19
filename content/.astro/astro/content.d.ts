@@ -152,9 +152,37 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"learn": {
+"acabar-vs-terminar.mdx": {
+	id: "acabar-vs-terminar.mdx";
+  slug: "acabar-vs-terminar";
+  body: string;
+  collection: "learn";
+  data: InferEntrySchema<"learn">
+} & { render(): Render[".mdx"] };
+"common-irregular-verbs.mdx": {
+	id: "common-irregular-verbs.mdx";
+  slug: "common-irregular-verbs";
+  body: string;
+  collection: "learn";
+  data: InferEntrySchema<"learn">
+} & { render(): Render[".mdx"] };
 "conditional-vs-future.mdx": {
 	id: "conditional-vs-future.mdx";
   slug: "conditional-vs-future";
+  body: string;
+  collection: "learn";
+  data: InferEntrySchema<"learn">
+} & { render(): Render[".mdx"] };
+"dejar-vs-salir.mdx": {
+	id: "dejar-vs-salir.mdx";
+  slug: "dejar-vs-salir";
+  body: string;
+  collection: "learn";
+  data: InferEntrySchema<"learn">
+} & { render(): Render[".mdx"] };
+"escuchar-vs-oir.mdx": {
+	id: "escuchar-vs-oir.mdx";
+  slug: "escuchar-vs-oir";
   body: string;
   collection: "learn";
   data: InferEntrySchema<"learn">
@@ -166,9 +194,44 @@ declare module 'astro:content' {
   collection: "learn";
   data: InferEntrySchema<"learn">
 } & { render(): Render[".mdx"] };
+"gastar-vs-pasar.mdx": {
+	id: "gastar-vs-pasar.mdx";
+  slug: "gastar-vs-pasar";
+  body: string;
+  collection: "learn";
+  data: InferEntrySchema<"learn">
+} & { render(): Render[".mdx"] };
+"gustar-and-similar-verbs.mdx": {
+	id: "gustar-and-similar-verbs.mdx";
+  slug: "gustar-and-similar-verbs";
+  body: string;
+  collection: "learn";
+  data: InferEntrySchema<"learn">
+} & { render(): Render[".mdx"] };
+"haber-vs-tener.mdx": {
+	id: "haber-vs-tener.mdx";
+  slug: "haber-vs-tener";
+  body: string;
+  collection: "learn";
+  data: InferEntrySchema<"learn">
+} & { render(): Render[".mdx"] };
+"how-to-practice-spanish-conjugations.mdx": {
+	id: "how-to-practice-spanish-conjugations.mdx";
+  slug: "how-to-practice-spanish-conjugations";
+  body: string;
+  collection: "learn";
+  data: InferEntrySchema<"learn">
+} & { render(): Render[".mdx"] };
 "ir-vs-venir.mdx": {
 	id: "ir-vs-venir.mdx";
   slug: "ir-vs-venir";
+  body: string;
+  collection: "learn";
+  data: InferEntrySchema<"learn">
+} & { render(): Render[".mdx"] };
+"latin-america-vs-spain-vocabulary.mdx": {
+	id: "latin-america-vs-spain-vocabulary.mdx";
+  slug: "latin-america-vs-spain-vocabulary";
   body: string;
   collection: "learn";
   data: InferEntrySchema<"learn">
@@ -180,9 +243,44 @@ declare module 'astro:content' {
   collection: "learn";
   data: InferEntrySchema<"learn">
 } & { render(): Render[".mdx"] };
+"mirar-vs-ver.mdx": {
+	id: "mirar-vs-ver.mdx";
+  slug: "mirar-vs-ver";
+  body: string;
+  collection: "learn";
+  data: InferEntrySchema<"learn">
+} & { render(): Render[".mdx"] };
+"most-common-spanish-verbs.mdx": {
+	id: "most-common-spanish-verbs.mdx";
+  slug: "most-common-spanish-verbs";
+  body: string;
+  collection: "learn";
+  data: InferEntrySchema<"learn">
+} & { render(): Render[".mdx"] };
 "pedir-vs-preguntar.mdx": {
 	id: "pedir-vs-preguntar.mdx";
   slug: "pedir-vs-preguntar";
+  body: string;
+  collection: "learn";
+  data: InferEntrySchema<"learn">
+} & { render(): Render[".mdx"] };
+"pensar-vs-creer.mdx": {
+	id: "pensar-vs-creer.mdx";
+  slug: "pensar-vs-creer";
+  body: string;
+  collection: "learn";
+  data: InferEntrySchema<"learn">
+} & { render(): Render[".mdx"] };
+"poder-vs-saber.mdx": {
+	id: "poder-vs-saber.mdx";
+  slug: "poder-vs-saber";
+  body: string;
+  collection: "learn";
+  data: InferEntrySchema<"learn">
+} & { render(): Render[".mdx"] };
+"por-que-porque-porqué.mdx": {
+	id: "por-que-porque-porqué.mdx";
+  slug: "por-que-porque-porqué";
   body: string;
   collection: "learn";
   data: InferEntrySchema<"learn">
@@ -208,6 +306,13 @@ declare module 'astro:content' {
   collection: "learn";
   data: InferEntrySchema<"learn">
 } & { render(): Render[".mdx"] };
+"quedar-vs-quedarse.mdx": {
+	id: "quedar-vs-quedarse.mdx";
+  slug: "quedar-vs-quedarse";
+  body: string;
+  collection: "learn";
+  data: InferEntrySchema<"learn">
+} & { render(): Render[".mdx"] };
 "reflexive-verbs-explained.mdx": {
 	id: "reflexive-verbs-explained.mdx";
   slug: "reflexive-verbs-explained";
@@ -218,6 +323,20 @@ declare module 'astro:content' {
 "saber-vs-conocer.mdx": {
 	id: "saber-vs-conocer.mdx";
   slug: "saber-vs-conocer";
+  body: string;
+  collection: "learn";
+  data: InferEntrySchema<"learn">
+} & { render(): Render[".mdx"] };
+"sentir-vs-sentirse.mdx": {
+	id: "sentir-vs-sentirse.mdx";
+  slug: "sentir-vs-sentirse";
+  body: string;
+  collection: "learn";
+  data: InferEntrySchema<"learn">
+} & { render(): Render[".mdx"] };
+"ser-estar-adjectives-that-change-meaning.mdx": {
+	id: "ser-estar-adjectives-that-change-meaning.mdx";
+  slug: "ser-estar-adjectives-that-change-meaning";
   body: string;
   collection: "learn";
   data: InferEntrySchema<"learn">
@@ -236,9 +355,79 @@ declare module 'astro:content' {
   collection: "learn";
   data: InferEntrySchema<"learn">
 } & { render(): Render[".mdx"] };
+"si-clauses.mdx": {
+	id: "si-clauses.mdx";
+  slug: "si-clauses";
+  body: string;
+  collection: "learn";
+  data: InferEntrySchema<"learn">
+} & { render(): Render[".mdx"] };
 "spanish-commands-imperative.mdx": {
 	id: "spanish-commands-imperative.mdx";
   slug: "spanish-commands-imperative";
+  body: string;
+  collection: "learn";
+  data: InferEntrySchema<"learn">
+} & { render(): Render[".mdx"] };
+"spanish-diminutives.mdx": {
+	id: "spanish-diminutives.mdx";
+  slug: "spanish-diminutives";
+  body: string;
+  collection: "learn";
+  data: InferEntrySchema<"learn">
+} & { render(): Render[".mdx"] };
+"spanish-future-of-probability.mdx": {
+	id: "spanish-future-of-probability.mdx";
+  slug: "spanish-future-of-probability";
+  body: string;
+  collection: "learn";
+  data: InferEntrySchema<"learn">
+} & { render(): Render[".mdx"] };
+"spanish-infinitive-vs-subjunctive.mdx": {
+	id: "spanish-infinitive-vs-subjunctive.mdx";
+  slug: "spanish-infinitive-vs-subjunctive";
+  body: string;
+  collection: "learn";
+  data: InferEntrySchema<"learn">
+} & { render(): Render[".mdx"] };
+"spanish-object-pronouns.mdx": {
+	id: "spanish-object-pronouns.mdx";
+  slug: "spanish-object-pronouns";
+  body: string;
+  collection: "learn";
+  data: InferEntrySchema<"learn">
+} & { render(): Render[".mdx"] };
+"spanish-passive-voice.mdx": {
+	id: "spanish-passive-voice.mdx";
+  slug: "spanish-passive-voice";
+  body: string;
+  collection: "learn";
+  data: InferEntrySchema<"learn">
+} & { render(): Render[".mdx"] };
+"spanish-past-participle.mdx": {
+	id: "spanish-past-participle.mdx";
+  slug: "spanish-past-participle";
+  body: string;
+  collection: "learn";
+  data: InferEntrySchema<"learn">
+} & { render(): Render[".mdx"] };
+"spanish-pluperfect.mdx": {
+	id: "spanish-pluperfect.mdx";
+  slug: "spanish-pluperfect";
+  body: string;
+  collection: "learn";
+  data: InferEntrySchema<"learn">
+} & { render(): Render[".mdx"] };
+"spanish-progressive-tenses.mdx": {
+	id: "spanish-progressive-tenses.mdx";
+  slug: "spanish-progressive-tenses";
+  body: string;
+  collection: "learn";
+  data: InferEntrySchema<"learn">
+} & { render(): Render[".mdx"] };
+"spanish-se-uses.mdx": {
+	id: "spanish-se-uses.mdx";
+  slug: "spanish-se-uses";
   body: string;
   collection: "learn";
   data: InferEntrySchema<"learn">
@@ -250,9 +439,23 @@ declare module 'astro:content' {
   collection: "learn";
   data: InferEntrySchema<"learn">
 } & { render(): Render[".mdx"] };
+"spanish-verb-conjugation-patterns.mdx": {
+	id: "spanish-verb-conjugation-patterns.mdx";
+  slug: "spanish-verb-conjugation-patterns";
+  body: string;
+  collection: "learn";
+  data: InferEntrySchema<"learn">
+} & { render(): Render[".mdx"] };
 "tu-vs-usted.mdx": {
 	id: "tu-vs-usted.mdx";
   slug: "tu-vs-usted";
+  body: string;
+  collection: "learn";
+  data: InferEntrySchema<"learn">
+} & { render(): Render[".mdx"] };
+"volver-vs-regresar.mdx": {
+	id: "volver-vs-regresar.mdx";
+  slug: "volver-vs-regresar";
   body: string;
   collection: "learn";
   data: InferEntrySchema<"learn">
