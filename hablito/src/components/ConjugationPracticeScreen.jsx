@@ -199,13 +199,34 @@ useEffect(() => {
         </Toolbar>
       </AppBar>
       <div>
-        <VerbConjugator 
+        <VerbConjugator
           randomVerb={randomVerb}
           randomTense={randomTense}
           randomVerbForm={randomVerbForm}
           resetScreen={resetScreen}
           counter={counter}
         />
+      </div>
+
+      {/* Google Play Button */}
+      <div style={{
+        position: 'fixed',
+        bottom: '10px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        zIndex: 10
+      }}>
+        <a
+          href="https://play.google.com/store/apps/details?id=com.conjugito.conjugitocontinue"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+            alt="Get it on Google Play"
+            style={{ height: '40px' }}
+          />
+        </a>
       </div>
 
     {/* Settings Side Tray */}
