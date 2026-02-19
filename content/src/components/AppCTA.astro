@@ -13,50 +13,72 @@ const {
 ---
 
 <div class="cta">
-  <p class="cta-message">{message}</p>
-  <p class="cta-body">
-    Hablito drills verb conjugations across all tenses until they become automatic —
-    free, no account needed.
-  </p>
-  <a href="/" class="cta-button">Practice for free →</a>
+  <div class="cta-inner">
+    <div class="cta-text">
+      <p class="cta-message">{message}</p>
+      <p class="cta-body">
+        Hablito drills verb conjugations across all tenses until they become automatic —
+        free, no account needed.
+      </p>
+    </div>
+    <a href="/" class="cta-button">Practice free →</a>
+  </div>
 </div>
 
 <style>
   .cta {
-    background: #eff6ff;
-    border: 1px solid #bfdbfe;
-    border-radius: 10px;
+    background: #003087;
+    border-radius: 12px;
     padding: 1.5rem;
-    margin: 2rem 0;
-    text-align: center;
+    margin: 2.5rem 0;
+  }
+
+  .cta-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+  }
+
+  .cta-text {
+    flex: 1;
   }
 
   .cta-message {
-    font-weight: 700;
-    font-size: 1.1rem;
-    color: #1e3a5f;
-    margin-bottom: 0.4rem;
+    font-size: 1rem;
+    color: #ffffff;
+    margin-bottom: 0.3rem;
+    line-height: 1.4;
   }
 
   .cta-body {
-    color: #475569;
-    font-size: 0.95rem;
-    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 0;
   }
 
   .cta-button {
     display: inline-block;
-    background: #2563eb;
+    background: #19857b;
     color: #ffffff;
-    font-weight: 600;
-    font-size: 0.95rem;
-    padding: 0.65rem 1.4rem;
-    border-radius: 6px;
+    font-size: 0.9rem;
+    padding: 0.6rem 1.25rem;
+    border-radius: 20px;
     text-decoration: none;
+    white-space: nowrap;
     transition: background 0.15s;
+    flex-shrink: 0;
   }
 
   .cta-button:hover {
-    background: #1d4ed8;
+    background: #136257;
+  }
+
+  @media (max-width: 540px) {
+    .cta-inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
 </style>
