@@ -217,7 +217,7 @@ useEffect(() => {
         zIndex: 10
       }}>
         <a
-          href="https://play.google.com/store/apps/details?id=com.conjugito.conjugitocontinue"
+          href="https://play.google.com/store/apps/details?id=com.conjugito.conjugito"
           target="_blank"
           rel="noopener noreferrer"
         >
