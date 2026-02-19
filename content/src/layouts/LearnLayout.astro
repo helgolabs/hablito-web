@@ -14,9 +14,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title} | Conjugito</title>
+    <title>{title} | Hablito</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" href="/conjugito-round-logo.png" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="article" />
@@ -32,17 +33,22 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       "datePublished": pubDate?.toISOString(),
       "publisher": {
         "@type": "Organization",
-        "name": "Conjugito",
-        "url": "https://conjugito.com"
+        "name": "Hablito",
+        "url": "https://www.hablito.com"
       }
     })} />
   </head>
   <body>
     <header>
       <nav>
-        <a href="/learn" class="nav-home">← All guides</a>
-        <a href="/" class="nav-brand">Conjugito</a>
-        <a href="/" class="nav-cta">Practice free →</a>
+        <div class="nav-left">
+          <img src="/conjugito-round-logo.png" alt="Hablito logo" class="nav-logo" />
+          <a href="/" class="nav-brand">Hablito <span class="nav-brand-sub">learn</span></a>
+        </div>
+        <div class="nav-right">
+          <a href="/learn" class="nav-guides">All guides</a>
+          <a href="/" class="nav-cta">Practice free →</a>
+        </div>
       </nav>
     </header>
 
@@ -61,13 +67,29 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     <footer>
       <p>
-        Master Spanish verb conjugation with <a href="/">Conjugito</a> — free, no account needed.
+        Master Spanish verb conjugation with <a href="/">Hablito</a> — free, no account needed.
       </p>
     </footer>
   </body>
 </html>
 
 <style is:global>
+  @font-face {
+    font-family: 'SofiaProRegular';
+    src: url('/fonts/SofiaProRegular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'SofiaProMedium';
+    src: url('/fonts/SofiaProMedium.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+
   *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -75,15 +97,19 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   }
 
   :root {
-    --color-bg: #ffffff;
-    --color-text: #1a1a2e;
+    --color-bg: #fefbff;
+    --color-surface: #ffffff;
+    --color-text: #1b1b1f;
     --color-muted: #64748b;
-    --color-accent: #2563eb;
-    --color-accent-light: #eff6ff;
+    --color-primary: #003087;
+    --color-primary-light: #778bef;
+    --color-teal: #19857b;
+    --color-teal-dark: #136257;
+    --color-accent-light: #e8f0fe;
     --color-border: #e2e8f0;
     --color-code-bg: #f1f5f9;
-    --font-sans: system-ui, -apple-system, sans-serif;
-    --font-serif: Georgia, 'Times New Roman', serif;
+    --font-sans: 'SofiaProRegular', system-ui, -apple-system, sans-serif;
+    --font-medium: 'SofiaProMedium', system-ui, -apple-system, sans-serif;
     --max-width: 720px;
   }
 
@@ -101,48 +127,77 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
   /* Header */
   header {
-    border-bottom: 1px solid var(--color-border);
+    background: var(--color-primary);
     position: sticky;
     top: 0;
-    background: var(--color-bg);
     z-index: 10;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
   }
 
   nav {
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: 0.75rem 1.5rem;
+    padding: 0 1.5rem;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .nav-logo {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+  }
+
+  .nav-brand {
+    font-family: var(--font-medium);
+    font-size: 1.1rem;
+    color: #ffffff;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-brand-sub {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.7);
+    font-weight: normal;
+    margin-left: 0.2rem;
+  }
+
+  .nav-right {
     display: flex;
     align-items: center;
     gap: 1rem;
   }
 
-  .nav-home {
-    color: var(--color-muted);
-    text-decoration: none;
+  .nav-guides {
     font-size: 0.85rem;
-    flex: 1;
-  }
-
-  .nav-home:hover { color: var(--color-text); }
-
-  .nav-brand {
-    font-weight: 700;
-    color: var(--color-text);
+    color: rgba(255,255,255,0.8);
     text-decoration: none;
-    font-size: 1rem;
   }
+
+  .nav-guides:hover { color: #ffffff; }
 
   .nav-cta {
     font-size: 0.85rem;
-    color: var(--color-accent);
+    font-family: var(--font-medium);
+    color: #ffffff;
+    background: var(--color-teal);
     text-decoration: none;
-    font-weight: 600;
-    flex: 1;
-    text-align: right;
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    transition: background 0.15s;
   }
 
-  .nav-cta:hover { text-decoration: underline; }
+  .nav-cta:hover { background: var(--color-teal-dark); }
 
   /* Main content */
   main {
@@ -155,15 +210,17 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   .article-header {
     margin-bottom: 2.5rem;
     padding-bottom: 2rem;
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 3px solid var(--color-primary);
   }
 
   .article-header h1 {
+    font-family: var(--font-medium);
     font-size: 2.2rem;
     line-height: 1.2;
-    font-weight: 800;
-    letter-spacing: -0.03em;
+    font-weight: normal;
+    letter-spacing: -0.02em;
     margin-bottom: 0.75rem;
+    color: var(--color-primary);
   }
 
   .article-description {
@@ -174,17 +231,20 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
   /* Article body typography */
   .article-body h2 {
+    font-family: var(--font-medium);
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: normal;
     margin: 2.5rem 0 0.75rem;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
+    color: var(--color-primary);
   }
 
   .article-body h3 {
+    font-family: var(--font-medium);
     font-size: 1.15rem;
-    font-weight: 600;
+    font-weight: normal;
     margin: 1.75rem 0 0.5rem;
-    color: var(--color-text);
+    color: var(--color-teal-dark);
   }
 
   .article-body p {
@@ -202,12 +262,21 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
   .article-body em {
     font-style: italic;
-    color: #1e3a5f;
+    color: var(--color-teal-dark);
   }
 
   .article-body strong {
-    font-weight: 700;
+    font-family: var(--font-medium);
+    font-weight: normal;
+    color: var(--color-primary);
   }
+
+  .article-body a {
+    color: var(--color-teal);
+    text-decoration: underline;
+  }
+
+  .article-body a:hover { color: var(--color-teal-dark); }
 
   /* Tables */
   .article-body table {
@@ -218,10 +287,12 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   }
 
   .article-body th {
-    background: var(--color-code-bg);
+    background: var(--color-primary);
+    color: #ffffff;
     padding: 0.6rem 0.9rem;
     text-align: left;
-    font-weight: 600;
+    font-family: var(--font-medium);
+    font-weight: normal;
     border: 1px solid var(--color-border);
   }
 
@@ -231,7 +302,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   }
 
   .article-body tr:nth-child(even) td {
-    background: #fafafa;
+    background: var(--color-accent-light);
   }
 
   /* Code / inline Spanish examples */
@@ -241,6 +312,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     border-radius: 4px;
     font-size: 0.9em;
     font-family: var(--font-sans);
+    color: var(--color-teal-dark);
   }
 
   .article-body pre {
@@ -253,10 +325,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     line-height: 1.6;
   }
 
-  /* Blockquotes (used for callouts) */
+  /* Blockquotes */
   .article-body blockquote {
-    border-left: 3px solid var(--color-accent);
-    background: var(--color-accent-light);
+    border-left: 3px solid var(--color-teal);
+    background: #e6f4f2;
     padding: 1rem 1.25rem;
     margin: 1.5rem 0;
     border-radius: 0 6px 6px 0;
@@ -264,7 +336,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
   .article-body blockquote p {
     margin: 0;
-    color: #1e3a5f;
+    color: var(--color-teal-dark);
   }
 
   /* Horizontal rule */
@@ -276,17 +348,17 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
   /* Footer */
   footer {
-    border-top: 1px solid var(--color-border);
+    background: var(--color-primary);
     padding: 2rem 1.5rem;
     text-align: center;
-    color: var(--color-muted);
+    color: rgba(255,255,255,0.75);
     font-size: 0.9rem;
   }
 
   footer a {
-    color: var(--color-accent);
+    color: #ffffff;
     text-decoration: none;
-    font-weight: 600;
+    font-family: var(--font-medium);
   }
 
   footer a:hover { text-decoration: underline; }
@@ -297,5 +369,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     .article-header h1 { font-size: 1.75rem; }
     .article-body table { font-size: 0.85rem; }
     .article-body th, .article-body td { padding: 0.4rem 0.6rem; }
+    .nav-guides { display: none; }
   }
 </style>

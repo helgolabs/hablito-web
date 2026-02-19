@@ -17,15 +17,21 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title} | Conjugito</title>
+    <title>{title} | Hablito</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" href="/conjugito-round-logo.png" />
   </head>
   <body>
     <header>
       <nav>
-        <a href="/" class="nav-brand">Conjugito</a>
-        <a href="/" class="nav-cta">Practice free →</a>
+        <div class="nav-left">
+          <img src="/conjugito-round-logo.png" alt="Hablito logo" class="nav-logo" />
+          <a href="/" class="nav-brand">Hablito <span class="nav-brand-sub">learn</span></a>
+        </div>
+        <div class="nav-right">
+          <a href="/" class="nav-cta">Practice free →</a>
+        </div>
       </nav>
     </header>
 
@@ -52,61 +58,115 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     <footer>
       <p>
-        Put it into practice with <a href="/">Conjugito</a> — free verb conjugation drills, no account needed.
+        Put it into practice with <a href="/">Hablito</a> — free verb conjugation drills, no account needed.
       </p>
     </footer>
   </body>
 </html>
 
 <style>
+  @font-face {
+    font-family: 'SofiaProRegular';
+    src: url('/fonts/SofiaProRegular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'SofiaProMedium';
+    src: url('/fonts/SofiaProMedium.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
     --max-width: 720px;
+    --color-bg: #fefbff;
     --color-border: #e2e8f0;
     --color-muted: #64748b;
-    --color-accent: #2563eb;
+    --color-primary: #003087;
+    --color-teal: #19857b;
+    --color-teal-dark: #136257;
+    --font-sans: 'SofiaProRegular', system-ui, -apple-system, sans-serif;
+    --font-medium: 'SofiaProMedium', system-ui, -apple-system, sans-serif;
   }
 
   html { font-size: 18px; }
 
   body {
-    font-family: system-ui, -apple-system, sans-serif;
-    color: #1a1a2e;
+    font-family: var(--font-sans);
+    background: var(--color-bg);
+    color: #1b1b1f;
     line-height: 1.6;
   }
 
   header {
-    border-bottom: 1px solid var(--color-border);
-    padding: 0.75rem 1.5rem;
+    background: var(--color-primary);
     position: sticky;
     top: 0;
-    background: #fff;
     z-index: 10;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
   }
 
   nav {
     max-width: var(--max-width);
     margin: 0 auto;
+    padding: 0 1.5rem;
+    height: 56px;
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
 
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .nav-logo {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+  }
+
   .nav-brand {
-    font-weight: 700;
-    color: #1a1a2e;
+    font-family: var(--font-medium);
+    font-size: 1.1rem;
+    color: #ffffff;
     text-decoration: none;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-brand-sub {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.7);
+    font-weight: normal;
+    margin-left: 0.2rem;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
   }
 
   .nav-cta {
     font-size: 0.85rem;
-    color: var(--color-accent);
-    font-weight: 600;
+    font-family: var(--font-medium);
+    color: #ffffff;
+    background: var(--color-teal);
     text-decoration: none;
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    transition: background 0.15s;
   }
 
-  .nav-cta:hover { text-decoration: underline; }
+  .nav-cta:hover { background: var(--color-teal-dark); }
 
   main {
     max-width: var(--max-width);
@@ -116,13 +176,17 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
   .hub-header {
     margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 3px solid var(--color-primary);
   }
 
   .hub-header h1 {
+    font-family: var(--font-medium);
     font-size: 2.2rem;
-    font-weight: 800;
-    letter-spacing: -0.03em;
+    font-weight: normal;
+    letter-spacing: -0.02em;
     margin-bottom: 0.5rem;
+    color: var(--color-primary);
   }
 
   .hub-header p {
@@ -136,16 +200,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   }
 
   footer {
-    border-top: 1px solid var(--color-border);
+    background: var(--color-primary);
     padding: 2rem 1.5rem;
     text-align: center;
-    color: var(--color-muted);
+    color: rgba(255,255,255,0.75);
     font-size: 0.9rem;
   }
 
   footer a {
-    color: var(--color-accent);
-    font-weight: 600;
+    color: #ffffff;
+    font-family: var(--font-medium);
     text-decoration: none;
   }
 
