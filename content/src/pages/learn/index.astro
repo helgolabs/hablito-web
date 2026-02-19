@@ -1,0 +1,158 @@
+---
+import { getCollection } from 'astro:content';
+import ArticleCard from '../../components/ArticleCard.astro';
+
+const articles = (await getCollection('learn')).sort(
+  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+);
+
+const title = 'Learn Spanish — Guides & Explanations';
+const description =
+  'Clear explanations of Spanish grammar, vocabulary, and usage. Understand why, not just what.';
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} | Conjugito</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/" class="nav-brand">Conjugito</a>
+        <a href="/" class="nav-cta">Practice free →</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="hub-header">
+        <h1>Learn Spanish</h1>
+        <p>
+          Practical guides on grammar, word choice, and usage —
+          the things that actually trip learners up.
+        </p>
+      </div>
+
+      <div class="article-grid">
+        {articles.map(article => (
+          <ArticleCard
+            title={article.data.title}
+            description={article.data.description}
+            slug={article.slug}
+            tags={article.data.tags}
+          />
+        ))}
+      </div>
+    </main>
+
+    <footer>
+      <p>
+        Put it into practice with <a href="/">Conjugito</a> — free verb conjugation drills, no account needed.
+      </p>
+    </footer>
+  </body>
+</html>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --max-width: 720px;
+    --color-border: #e2e8f0;
+    --color-muted: #64748b;
+    --color-accent: #2563eb;
+  }
+
+  html { font-size: 18px; }
+
+  body {
+    font-family: system-ui, -apple-system, sans-serif;
+    color: #1a1a2e;
+    line-height: 1.6;
+  }
+
+  header {
+    border-bottom: 1px solid var(--color-border);
+    padding: 0.75rem 1.5rem;
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 10;
+  }
+
+  nav {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-brand {
+    font-weight: 700;
+    color: #1a1a2e;
+    text-decoration: none;
+  }
+
+  .nav-cta {
+    font-size: 0.85rem;
+    color: var(--color-accent);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .nav-cta:hover { text-decoration: underline; }
+
+  main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 3rem 1.5rem 4rem;
+  }
+
+  .hub-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .hub-header h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.5rem;
+  }
+
+  .hub-header p {
+    color: var(--color-muted);
+    font-size: 1.05rem;
+  }
+
+  .article-grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  footer {
+    border-top: 1px solid var(--color-border);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+  }
+
+  footer a {
+    color: var(--color-accent);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    html { font-size: 16px; }
+    .hub-header h1 { font-size: 1.75rem; }
+  }
+</style>

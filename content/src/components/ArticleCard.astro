@@ -1,0 +1,67 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  slug: string;
+  tags: string[];
+}
+
+const { title, description, slug, tags } = Astro.props;
+---
+
+<a href={`/learn/${slug}`} class="card">
+  <h2 class="card-title">{title}</h2>
+  <p class="card-description">{description}</p>
+  {tags.length > 0 && (
+    <ul class="card-tags">
+      {tags.map(tag => <li class="tag">{tag}</li>)}
+    </ul>
+  )}
+</a>
+
+<style>
+  .card {
+    display: block;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+
+  .card:hover {
+    border-color: #2563eb;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.1);
+  }
+
+  .card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 0.35rem;
+  }
+
+  .card-description {
+    font-size: 0.9rem;
+    color: #64748b;
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+  }
+
+  .card-tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    background: #f1f5f9;
+    color: #475569;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+  }
+</style>

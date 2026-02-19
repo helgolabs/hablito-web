@@ -1,3 +1,5 @@
 hablito_backup.sql
 .env
 .env*
+node_modules
+

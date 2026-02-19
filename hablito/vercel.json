@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/learn/:path*",
+      "destination": "CONTENT_APP_VERCEL_URL/learn/:path*"
+    }
+  ]
+}

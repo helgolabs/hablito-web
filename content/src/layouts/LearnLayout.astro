@@ -1,0 +1,301 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  pubDate?: Date;
+}
+
+const { title, description, pubDate } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} | Conjugito</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": title,
+      "description": description,
+      "datePublished": pubDate?.toISOString(),
+      "publisher": {
+        "@type": "Organization",
+        "name": "Conjugito",
+        "url": "https://conjugito.com"
+      }
+    })} />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/learn" class="nav-home">← All guides</a>
+        <a href="/" class="nav-brand">Conjugito</a>
+        <a href="/" class="nav-cta">Practice free →</a>
+      </nav>
+    </header>
+
+    <main>
+      <article>
+        <header class="article-header">
+          <h1>{title}</h1>
+          <p class="article-description">{description}</p>
+        </header>
+
+        <div class="article-body">
+          <slot />
+        </div>
+      </article>
+    </main>
+
+    <footer>
+      <p>
+        Master Spanish verb conjugation with <a href="/">Conjugito</a> — free, no account needed.
+      </p>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  :root {
+    --color-bg: #ffffff;
+    --color-text: #1a1a2e;
+    --color-muted: #64748b;
+    --color-accent: #2563eb;
+    --color-accent-light: #eff6ff;
+    --color-border: #e2e8f0;
+    --color-code-bg: #f1f5f9;
+    --font-sans: system-ui, -apple-system, sans-serif;
+    --font-serif: Georgia, 'Times New Roman', serif;
+    --max-width: 720px;
+  }
+
+  html {
+    font-size: 18px;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.7;
+  }
+
+  /* Header */
+  header {
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    background: var(--color-bg);
+    z-index: 10;
+  }
+
+  nav {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .nav-home {
+    color: var(--color-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    flex: 1;
+  }
+
+  .nav-home:hover { color: var(--color-text); }
+
+  .nav-brand {
+    font-weight: 700;
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 1rem;
+  }
+
+  .nav-cta {
+    font-size: 0.85rem;
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 600;
+    flex: 1;
+    text-align: right;
+  }
+
+  .nav-cta:hover { text-decoration: underline; }
+
+  /* Main content */
+  main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  /* Article header */
+  .article-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .article-header h1 {
+    font-size: 2.2rem;
+    line-height: 1.2;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.75rem;
+  }
+
+  .article-description {
+    color: var(--color-muted);
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+
+  /* Article body typography */
+  .article-body h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 2.5rem 0 0.75rem;
+    letter-spacing: -0.02em;
+  }
+
+  .article-body h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin: 1.75rem 0 0.5rem;
+    color: var(--color-text);
+  }
+
+  .article-body p {
+    margin-bottom: 1.25rem;
+  }
+
+  .article-body ul,
+  .article-body ol {
+    margin: 0 0 1.25rem 1.5rem;
+  }
+
+  .article-body li {
+    margin-bottom: 0.4rem;
+  }
+
+  .article-body em {
+    font-style: italic;
+    color: #1e3a5f;
+  }
+
+  .article-body strong {
+    font-weight: 700;
+  }
+
+  /* Tables */
+  .article-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+  }
+
+  .article-body th {
+    background: var(--color-code-bg);
+    padding: 0.6rem 0.9rem;
+    text-align: left;
+    font-weight: 600;
+    border: 1px solid var(--color-border);
+  }
+
+  .article-body td {
+    padding: 0.6rem 0.9rem;
+    border: 1px solid var(--color-border);
+  }
+
+  .article-body tr:nth-child(even) td {
+    background: #fafafa;
+  }
+
+  /* Code / inline Spanish examples */
+  .article-body code {
+    background: var(--color-code-bg);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-family: var(--font-sans);
+  }
+
+  .article-body pre {
+    background: var(--color-code-bg);
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  /* Blockquotes (used for callouts) */
+  .article-body blockquote {
+    border-left: 3px solid var(--color-accent);
+    background: var(--color-accent-light);
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .article-body blockquote p {
+    margin: 0;
+    color: #1e3a5f;
+  }
+
+  /* Horizontal rule */
+  .article-body hr {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: 2.5rem 0;
+  }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid var(--color-border);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+  }
+
+  footer a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  footer a:hover { text-decoration: underline; }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    html { font-size: 16px; }
+    .article-header h1 { font-size: 1.75rem; }
+    .article-body table { font-size: 0.85rem; }
+    .article-body th, .article-body td { padding: 0.4rem 0.6rem; }
+  }
+</style>

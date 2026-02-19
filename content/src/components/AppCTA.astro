@@ -1,0 +1,62 @@
+---
+interface Props {
+  verb?: string;
+  message?: string;
+}
+
+const {
+  verb,
+  message = verb
+    ? `Ready to practice ${verb}?`
+    : 'Ready to put this into practice?',
+} = Astro.props;
+---
+
+<div class="cta">
+  <p class="cta-message">{message}</p>
+  <p class="cta-body">
+    Conjugito drills verb conjugations across all tenses until they become automatic —
+    free, no account needed.
+  </p>
+  <a href="/" class="cta-button">Practice for free →</a>
+</div>
+
+<style>
+  .cta {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    text-align: center;
+  }
+
+  .cta-message {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #1e3a5f;
+    margin-bottom: 0.4rem;
+  }
+
+  .cta-body {
+    color: #475569;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: #2563eb;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.65rem 1.4rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+
+  .cta-button:hover {
+    background: #1d4ed8;
+  }
+</style>
