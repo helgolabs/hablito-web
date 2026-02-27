@@ -1,4 +1,6 @@
 ---
+import { Analytics } from '@vercel/analytics/astro';
+
 interface Props {
   title: string;
   description: string;
@@ -432,5 +434,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       }
       window.addEventListener('scroll', updateProgress, { passive: true });
     </script>
+    <Analytics />
   </body>
 </html>

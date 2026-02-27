@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import ArticleCard from '../../components/ArticleCard.astro';
+import { Analytics } from '@vercel/analytics/astro';
 
 const articles = (await getCollection('learn')).sort(
   (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
@@ -61,6 +62,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         Put it into practice with <a href="/">Hablito</a> — free verb conjugation drills, no account needed.
       </p>
     </footer>
+    <Analytics />
   </body>
 </html>
 
