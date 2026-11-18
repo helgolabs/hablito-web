@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import VerbConjugator from './VerbConjugator';
 import SettingsIcon from '@mui/icons-material/Settings';
 import SettingsSidebar from './SettingsSidebar';
@@ -25,13 +25,21 @@ function ConjugationPracticeScreen() {
   //this is to ensure that verb conjugator only re-renders when showSettings becomes false
   const [prevUserPracticeSettings, setPrevUserPracticeSettings] = useState(null);
 
+  // Last settings applied to the practice screen, so opening/closing the sidebar
+  // without changing anything doesn't roll a new verb
+  const appliedSettingsRef = useRef(null);
+
   const userId = getUserIdFromCookie();
   
   const fetchData = async () => {
     try {
       const data = await fetchUserSettings(userId);
-      setPrevUserPracticeSettings(userPracticeSettings)
-      setUserPracticeSettings(data);
+      const serialized = JSON.stringify(data);
+      if (serialized !== appliedSettingsRef.current) {
+        appliedSettingsRef.current = serialized;
+        setPrevUserPracticeSettings(userPracticeSettings)
+        setUserPracticeSettings(data);
+      }
       setLoading(false);
     } catch (error) {
       setError(error);
@@ -41,7 +49,6 @@ function ConjugationPracticeScreen() {
 
   const toggleSettings = () => {
     setShowSettings(!showSettings);
-    fetchData()
   };
 
   const toggleVerbsScreen = () => {

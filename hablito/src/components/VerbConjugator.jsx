@@ -56,16 +56,25 @@ function VerbConjugator({ randomVerb, randomTense, randomVerbForm, resetScreen, 
     setUserAnswer('shown');
   };
 
-  const handleNextClick = () => {
+  const clearAnswer = () => {
     setInputValue("");
     setButtonText("Check");
-    resetScreen();
     setShowEnglishInfinitive(false);
     setShowConjugationAudio(false);
     setShowMeDisabled(false);
     setUserAnswer('unchecked');
+  };
+
+  const handleNextClick = () => {
+    clearAnswer();
+    resetScreen();
     inputRef.current.focus(); 
   };
+
+  // Clears the answer whenever a new verb is loaded, e.g. after settings change
+  useEffect(() => {
+    clearAnswer();
+  }, [randomVerb]);
 
   const audioRef = useRef(null);  // Create a ref to hold the audio element
 
